@@ -1,0 +1,18 @@
+version: "3.6"
+
+services:
+  couch:
+    image: "couchdb:latest"
+    ports:
+      - "5984:5984"
+    env_file: .env
+
+  ui:
+    depends_on:
+      - couch
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    env_file: .env
