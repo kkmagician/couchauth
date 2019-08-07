@@ -53,8 +53,9 @@ export default {
     axios
       .get("/api/content")
       .then(res => (this.content = res.data.docs))
-      .catch(err => (this.errorMessage = err.response.data.reason))
-      .catch(() => (this.errorMessage = "Unknown error"));
+      .catch(
+        err => (this.errorMessage = err.response.data.reason || "Unknown error")
+      );
   }
 };
 </script>

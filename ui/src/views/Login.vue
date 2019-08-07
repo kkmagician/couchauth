@@ -47,7 +47,9 @@ export default {
         .then(() => this.$router.push("/profile"))
         .catch(err => {
           this.errorMessage =
-            err.response.status === 401 ? "Wrong credentials" : "Unknown error";
+            err.response.status === 401
+              ? "Wrong credentials"
+              : "Unknown error" || "Unknown error";
         });
     }
   }

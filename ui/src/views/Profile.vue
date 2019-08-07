@@ -49,12 +49,17 @@ export default {
     }
   },
   created: async function() {
-    axios.get("/api/profile").then(resp => {
-      this.profile = resp.data.profile;
-      this.avatar = resp.data.avatar
-        ? "data:image/jpeg;base64," + resp.data.avatar
-        : "";
-    });
+    axios
+      .get("/api/profile")
+      .then(resp => {
+        this.profile = resp.data.profile;
+        this.avatar = resp.data.avatar
+          ? "data:image/jpeg;base64," + resp.data.avatar
+          : "";
+      })
+      .catch(
+        err => (this.errorMessage = err.response.data.reason || "Unknown error")
+      );
   }
 };
 </script>

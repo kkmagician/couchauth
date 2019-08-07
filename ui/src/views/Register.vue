@@ -102,8 +102,7 @@ export default {
         data: profile
       })
         .then(resp => resp.data)
-        .catch(err => (this.errorMessage = err.response.data.reason))
-        .catch(() => (this.errorMessage = "Unexpected error"));
+        .catch(err => (this.errorMessage = err.response.data.reason || "Unexpected error"))
 
       if (resp.ok && this.avatar.type) {
         const processError = () =>

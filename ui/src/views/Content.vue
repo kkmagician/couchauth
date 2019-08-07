@@ -51,8 +51,9 @@ export default {
     axios
       .get("/api/content/" + this.$route.params.id)
       .then(res => (this.post = res.data))
-      .catch(err => (this.errorMessage = err.response.data.reason))
-      .catch(() => (this.errorMessage = "Unknown error"));
+      .catch(
+        err => (this.errorMessage = err.response.data.reason || "Unknown error")
+      );
   }
 };
 </script>
