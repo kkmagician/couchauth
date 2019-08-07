@@ -74,15 +74,7 @@ app.get('/api/session', async function (req, res) {
 // @param skip
 // @param bookmark
 app.get('/api/content', async function (req, res) {
-    const limit = parseInt(req.query.limit) || 10;
-    const skip = parseInt(req.query.skip) || 0;
-    const bookmark = req.query.bookmark || "";
-
-    const content = await methods.getContentFeed(req, {
-        limit,
-        skip,
-        bookmark
-    })
+    const content = await methods.getContentFeed(req)
     res.status(content.status).json(content.data);
 })
 

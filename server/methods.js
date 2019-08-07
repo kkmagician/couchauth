@@ -102,8 +102,13 @@ function getProfile(username) {
     });
 }
 
-function getContentFeed(req, q) {
+function getContentFeed(req) {
     const cookie = req.headers.cookie;
+    const q = {
+        limit: parseInt(req.query.limit) || 10,
+        skip: parseInt(req.query.skip) || 0,
+        bookmark: req.query.bookmark || "",
+    };
 
     return axios({
         method: "post",
