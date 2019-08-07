@@ -27,8 +27,7 @@ const putDb = (name, auth) => {
             auth
         })
         .then(resp => resp.status < 300 ? true : false)
-        .catch(err => err.response.status == 412 ? true : false)
-        .catch(false)
+        .catch(err => err.response.status == 412 ? true : false || false)
 }
 
 const changeSetting = (setting, value, auth) => {
@@ -58,8 +57,7 @@ const toCouch = (method, location, data, ok, auth) => {
             auth
         })
         .then(resp => resp.status < 300 ? true : false)
-        .catch(err => ok.includes(err.response.status) ? true : false)
-        .catch(false)
+        .catch(err => ok.includes(err.response.status) ? true : false || false)
 }
 
 // Initialization of CouchDB function
